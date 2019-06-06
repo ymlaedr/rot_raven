@@ -5,7 +5,7 @@ config :rot_raven, RotRaven.Repo,
   username: "postgres",
   password: "postgres",
   database: "rot_raven_dev",
-  hostname: "localhost",
+  hostname: "database",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
@@ -58,6 +58,8 @@ config :rot_raven, RotRavenWeb.Endpoint,
 config :rot_raven, RotRavenWeb.Endpoint,
   live_reload: [
     patterns: [
+      ~r{lib/lv_sample_web/live/.*(ex)$},
+      ~r{lib/lv_sample_web/templates/.*(leex)$},
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/rot_raven_web/{live,views}/.*(ex)$",
