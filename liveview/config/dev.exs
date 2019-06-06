@@ -4,7 +4,7 @@ use Mix.Config
 config :rot_raven, RotRaven.Repo,
   username: "postgres",
   password: "postgres",
-  database: "rot_raven_dev",
+  database: "rot_raven_liveview_dev",
   hostname: "database",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
