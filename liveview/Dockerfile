@@ -5,7 +5,9 @@ WORKDIR /root/liveview
 
 RUN apk add --update \
   git \
-  inotify-tools
+  inotify-tools \
+  nodejs \
+  nodejs-npm
 
 RUN mix local.hex --force
 RUN mix archive.install hex phx_new --force
