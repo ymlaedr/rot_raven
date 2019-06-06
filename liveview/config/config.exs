@@ -12,6 +12,7 @@ config :rot_raven,
 
 # Configures the endpoint
 config :rot_raven, RotRavenWeb.Endpoint,
+  live_view: [signing_salt: "EmjU9OVrTrAp4QLqXri8KEzF2LenRfkXLLPYOU5Z7Qxi+dRYclxMU0J3aCLhQtHn"],
   url: [host: "localhost"],
   secret_key_base: "mhQfJXVa0J+RsMhz0drjWwSaDZdCxDG0bJlFUnr93pUi/4E4aF/8jbsH4pVbOmxD",
   render_errors: [view: RotRavenWeb.ErrorView, accepts: ~w(html json)],

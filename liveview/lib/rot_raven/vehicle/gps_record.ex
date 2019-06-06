@@ -58,6 +58,6 @@ defmodule RotRaven.Vehicle.GpsRecord do
   @doc false
   def get_all_gpsrecord() do
     __MODULE__
-    |> Housebook.Repo.all()
+    |> RotRaven.Repo.all()
   end
 end

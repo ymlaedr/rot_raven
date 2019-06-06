@@ -1,6 +1,8 @@
 defmodule RotRavenWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :rot_raven
 
+  socket "/live", Phoenix.LiveView.Socket
+
   socket "/socket", RotRavenWeb.UserSocket,
     websocket: true,
     longpoll: false
