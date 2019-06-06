@@ -3,7 +3,7 @@
 ### LiveView
 ```sh
 docker-compose run --rm liveview mix do deps.get, deps.compile, ecto.reset
-docker run --rm -v ${PWD}/liveview:/liveview node:alpine /bin/sh -c "cd /liveview/assets && npm install"
+docker run --rm -v ${PWD}/liveview:/liveview node:alpine /bin/sh -c "cd /liveview/assets && yarn"
 ```
 
 ## PostgresQLへの接続の仕方
