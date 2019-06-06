@@ -10,6 +10,7 @@ services:
       - "4000:4000"
     volumes:
       - "./liveview:/root/liveview"
+    working_dir: "/root/liveview"
     command: ["mix", "phx.server"]
     depends_on:
       - database
