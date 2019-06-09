@@ -24,6 +24,8 @@ services:
     volumes:
       - "./nerves:/root/nerves"
       - "./ssh_keys:/root/.ssh"
+    env_file:
+      - env_files/nerves.env
 
   database:
     image: postgres:11-alpine
