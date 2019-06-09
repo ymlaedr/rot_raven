@@ -6,6 +6,12 @@ docker-compose run --rm liveview mix do deps.get, deps.compile, ecto.reset
 docker run --rm -v ${PWD}/liveview:/liveview node:alpine /bin/sh -c "cd /liveview/assets && yarn"
 ```
 
+### Nerves
+```sh
+echo "MIX_TARGET=" > ./env_files/nerves.env
+docker-compose run --rm nerves ssh-keygen -t rsa -f /root/.ssh/id_rsa -N ""
+```
+
 ## PostgresQLへの接続の仕方
 コンテナを立ち上げておくこと。
 
