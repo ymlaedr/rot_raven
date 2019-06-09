@@ -15,6 +15,16 @@ services:
     depends_on:
       - database
 
+  nerves:
+    build:
+      context: ./nerves
+      dockerfile: Dockerfile
+    devices:
+      - "/dev/sdb:/dev/sdb"
+    volumes:
+      - "./nerves:/root/nerves"
+      - "./ssh_keys:/root/.ssh"
+
   database:
     image: postgres:11-alpine
     ports:
