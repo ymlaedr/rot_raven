@@ -23,3 +23,6 @@ indent_size = 2
 indent_size = 2
 trim_trailing_whitespace = false
 insert_trailing_whitespace = true
+
+[*.{yml,yaml}]
+indent_size = 2
