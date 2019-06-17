@@ -1,0 +1,7 @@
+version: '2'
+
+syncs:
+  sync-volume-liveview:
+    src: './liveview'
+  sync-volume-nerves:
+    src: './nerves'

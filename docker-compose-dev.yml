@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  liveview:
+    volumes:
+      - "sync-volume-liveview:/root/liveview"
+  nerves:
+    volumes:
+      - "sync-volume-nerves:/root/nerves"
+
+volumes:
+  sync-volume-liveview:
+    external: true
+  sync-volume-nerves:
+    external: true
+
