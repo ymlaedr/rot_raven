@@ -5,3 +5,6 @@
 *.env
 
 ssh_keys/*
+
+# デバイス接続用設定ファイルを無視
+docker-compose-nerves-devices.yml
