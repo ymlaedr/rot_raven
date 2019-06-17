@@ -1,4 +1,4 @@
-FROM elixir:1.8-alpine
+FROM elixir:1.8.2-alpine
 MAINTAINER YoshimuraMakoto<ymlaedr@gmail.com>
 
 WORKDIR /root/liveview

@@ -42,8 +42,12 @@ services:
     build:
       context: ./gigalixir_client
       dockerfile: Dockerfile
+    volumes:
+      - "./ssh_keys:/root/.ssh"
+      - "./liveview:/root/liveview"
     env_file:
       - env_files/gigalixir_login.env
+    working_dir: "/root/liveview"
 
 volumes:
 
