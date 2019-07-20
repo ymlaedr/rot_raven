@@ -23,6 +23,13 @@ docker run --rm \
   /bin/sh -c "apk add --update openssh-client && ssh-keygen -t rsa -f /root/.ssh/rsa_gigalixir -N \"\""
 ```
 
+## `mix format`、`mix credo`の実行
+```sh
+docker-compose run --rm \
+  liveview \
+    /bin/sh -c "mix format mix.exs \"lib/**/*.{ex,exs}\" \"test/**/*.{ex,exs}\" && mix credo"
+```
+
 ## PostgresQLへの接続の仕方
 コンテナを立ち上げておくこと。
 
