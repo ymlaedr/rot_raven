@@ -4,7 +4,12 @@
 # .env系は無視(各人が持つログイン情報等記載させるため)
 *.env
 
+# gigalixir_client, nervesで使うssh_keyをすべて無視
 ssh_keys/*
 
 # デバイス接続用設定ファイルを無視
 docker-compose-nerves-devices.yml
+
+
+# ログファイル系をすべて無視
+*.log
