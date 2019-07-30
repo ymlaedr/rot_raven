@@ -2,7 +2,7 @@
 
 ### LiveView
 ```sh
-docker-compose run --rm liveview mix do deps.get, deps.compile, ecto.reset
+docker-compose -f docker-compose.yml -f docker-compose-dev.yml run --rm liveview mix do deps.get, deps.compile, ecto.reset
 docker run --rm -v ${PWD}/liveview:/liveview node:12.1-alpine /bin/sh -c "cd /liveview/assets && yarn"
 ```
 

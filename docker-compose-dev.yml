@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  liveview:
+    volumes:
+      - liveview-sync-volume:/root/liveview:nocopy
+
+
+volumes:
+  liveview-sync-volume:
+    external: true
