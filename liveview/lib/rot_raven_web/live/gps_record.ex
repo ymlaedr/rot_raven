@@ -112,25 +112,28 @@ defmodule RotRavenWeb.GpsRecord do
     """
   end
 
-  def mount( _session, socket ) do
+  def mount(_session, socket) do
     GpsRecord.get_all_gpsrecord() |> IO.inspect()
+
     {
       :ok,
       assign(socket, records: GpsRecord.get_all_gpsrecord(), records_json: "")
     }
   end
 
-  def handle_event("submit", %{ "records_json" => records_json }, socket) do
+  def handle_event("submit", %{"records_json" => records_json}, socket) do
     IO.inspect("handle_event function called.")
     send(self(), {:submit, records_json})
-    {:noreply, assign(socket, records: [], records_json: records_json ) }
+    {:noreply, assign(socket, records: [], records_json: records_json)}
   end
 
   def handle_info({:submit, records_json}, socket) do
     IO.inspect("handle_info function called.")
+
     records_json
     |> Poison.decode!()
-    |> Enum.each( &%GpsRecord{} |> GpsRecord.changeset(&1) |> RotRaven.Repo.insert!() )
+    |> Enum.each(&(%GpsRecord{} |> GpsRecord.changeset(&1) |> RotRaven.Repo.insert!()))
+
     {:noreply, assign(socket, records: Poison.decode!(records_json))}
   end
 end
