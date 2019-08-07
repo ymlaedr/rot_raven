@@ -12,7 +12,7 @@ RUN apt update \
   g++ \
   libtool \
   make \
-  unzip
+  unzip \
   wget
   
 RUN wget -O /usr/local/bin/protoc-gen-grpc-web  https://github.com/grpc/grpc-web/releases/download/1.0.6/protoc-gen-grpc-web-1.0.6-linux-x86_64
