@@ -13,7 +13,8 @@ services:
     working_dir: "/root/liveview"
     command: ["mix", "phx.server"]
     depends_on:
-      - database
+      - postgres
+      - mongo
 
   grpc:
     build:
@@ -30,7 +31,7 @@ services:
     env_file:
       - env_files/nerves.env
 
-  database:
+  postgres:
     image: postgres:11-alpine
     ports:
       - "5432:5432"
@@ -42,6 +43,13 @@ services:
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=postgres"
       - "POSTGRES_HOST=database"
+
+  mongo:
+    image: mongo:4.1.13-bionic
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb-data:/data/db
 
   gigalixir_client:
     build:
@@ -57,4 +65,7 @@ services:
 volumes:
 
   postgresql-data:
+    driver: local
+
+  mongodb-data:
     driver: local

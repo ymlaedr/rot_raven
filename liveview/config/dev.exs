@@ -5,7 +5,7 @@ config :rot_raven, RotRaven.Repo,
   username: "postgres",
   password: "postgres",
   database: "rot_raven_liveview_dev",
-  hostname: "database",
+  hostname: "postgres",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
