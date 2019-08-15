@@ -62,6 +62,13 @@ services:
     depends_on:
       - dynamo
 
+  aws-cli:
+    image: python:3.7.4-alpine
+    command: ["/bin/sh", "-c", "pip3 install awscli --upgrade && /bin/sh"]
+    depends_on:
+      - dynamo
+      - dynamo-admin
+
   gigalixir-client:
     build:
       context: ./gigalixir_client
