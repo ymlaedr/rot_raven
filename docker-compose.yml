@@ -14,7 +14,7 @@ services:
     command: ["mix", "phx.server"]
     depends_on:
       - postgres
-      - mongo
+      - dynamo
 
   grpc:
     build:
@@ -44,14 +44,25 @@ services:
       - "POSTGRES_PASSWORD=postgres"
       - "POSTGRES_HOST=database"
 
-  mongo:
-    image: mongo:4.1.13-bionic
+  dynamo:
+    image: amazon/dynamodb-local:1.11.477
     ports:
-      - "27017:27017"
+      - "8000:8000"
     volumes:
-      - mongodb-data:/data/db
+      - dynamodb-data:/home/dynamodblocal
+    command: ["-jar", "DynamoDBLocal.jar", "-sharedDb"]
 
-  gigalixir_client:
+  dynamo-admin:
+    image: node:12-alpine
+    ports:
+      - "8001:8001"
+    environment:
+      - "DYNAMO_ENDPOINT=http://dynamo:8000"
+    command: ["/bin/sh", "-c", "npm install -g dynamodb-admin && dynamodb-admin"]
+    depends_on:
+      - dynamo
+
+  gigalixir-client:
     build:
       context: ./gigalixir_client
       dockerfile: Dockerfile
@@ -67,5 +78,5 @@ volumes:
   postgresql-data:
     driver: local
 
-  mongodb-data:
+  dynamodb-data:
     driver: local
