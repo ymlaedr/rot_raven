@@ -58,6 +58,6 @@ defmodule RotRaven.Vehicle.GpsRecord do
   @doc false
   def get_all_gpsrecord() do
     __MODULE__
-    |> RotRaven.Repo.all()
+    |> RotRaven.Postgres.Repo.all()
   end
 end

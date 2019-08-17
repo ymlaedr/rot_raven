@@ -8,7 +8,10 @@
 use Mix.Config
 
 config :rot_raven,
-  ecto_repos: [RotRaven.Repo]
+  ecto_repos: [
+    RotRaven.Postgres.Repo,
+    RotRaven.DynamoDB.Repo
+  ]
 
 # Configures the endpoint
 config :rot_raven, RotRavenWeb.Endpoint,

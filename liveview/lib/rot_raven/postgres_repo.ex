@@ -1,4 +1,4 @@
-defmodule RotRaven.Repo do
+defmodule RotRaven.Postgres.Repo do
   use Ecto.Repo,
     otp_app: :rot_raven,
     adapter: Ecto.Adapters.Postgres

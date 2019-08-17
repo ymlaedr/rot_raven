@@ -132,7 +132,7 @@ defmodule RotRavenWeb.GpsRecord do
 
     records_json
     |> Poison.decode!()
-    |> Enum.each(&(%GpsRecord{} |> GpsRecord.changeset(&1) |> RotRaven.Repo.insert!()))
+    |> Enum.each(&(%GpsRecord{} |> GpsRecord.changeset(&1) |> RotRaven.Postgres.Repo.insert!()))
 
     {:noreply, assign(socket, records: Poison.decode!(records_json))}
   end
