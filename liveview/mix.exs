@@ -19,6 +19,7 @@ defmodule RotRaven.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
+      applications: [:ecto_adapters_dynamodb],
       mod: {RotRaven.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
@@ -33,19 +34,21 @@ defmodule RotRaven.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.6"},
+      {:phoenix, "~> 1.4.8"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:phoenix_live_view, github: "phoenixframework/phoenix_live_view"},
-      {:ecto_sql, "~> 3.0"},
+      {:ecto, "~> 3.1.0", override: true},
+      {:ecto_sql, "~> 3.1.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:poison, "~> 4.0.1"},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
+      {:poison, "~> 4.0.1", override: true},
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:ecto_adapters_dynamodb, "~> 1.2"}
     ]
   end
 
