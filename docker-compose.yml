@@ -80,6 +80,14 @@ services:
       - env_files/gigalixir_login.env
     working_dir: "/root/liveview"
 
+  schemaspy:
+    image: "schemaspy/schemaspy:snapshot"
+    volumes:
+      - "./schemaspy/output:/output"
+    command: ["-host", "postgres:5432", "-t", "pgsql", "-db", "rot_raven_liveview_dev", "-u", "postgres", "-p", "postgres"]
+    depends_on:
+      - postgres
+
 volumes:
 
   postgresql-data:

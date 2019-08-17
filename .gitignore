@@ -13,3 +13,6 @@ docker-compose-nerves-devices.yml
 
 # ログファイル系をすべて無視
 *.log
+
+# schemaspyの出力結果をすべて無視
+schemaspy/output/*
