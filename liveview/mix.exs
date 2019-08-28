@@ -19,7 +19,6 @@ defmodule RotRaven.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      applications: [:ecto_adapters_dynamodb],
       mod: {RotRaven.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
@@ -47,8 +46,7 @@ defmodule RotRaven.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 4.0.1", override: true},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
-      {:ecto_adapters_dynamodb, "~> 1.2"}
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
     ]
   end
 

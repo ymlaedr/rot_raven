@@ -9,21 +9,6 @@ config :rot_raven, RotRaven.Repo,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 
-# Configuration for DynamoDB database
-config :my_app, RotRaven.DynamoDB.Repo,
-  adapter: Ecto.Adapters.DynamoDB,
-  # ExAws configuration
-  access_key_id: "",
-  secret_access_key: "",
-  region: "us-east-1",
-  debug_requests: true, # ExAws option to enable debug on aws http request.
-  dynamodb: [
-    scheme: "http://",
-    host: "dynamo",
-    port: 8000,
-    region: "us-east-1"
-  ]
-
 # For development, we disable any cache and enable
 # debugging and code reloading.
 #
