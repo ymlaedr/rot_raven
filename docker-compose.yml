@@ -15,8 +15,9 @@ services:
     depends_on:
       - postgres
       - mongo
+      - mongo-express
 
-  grpc:
+  elixir-grpc:
     build:
       context: ./grpc
       dockerfile: Dockerfile
