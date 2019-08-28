@@ -20,7 +20,7 @@ defmodule RotRaven.MixProject do
   def application do
     [
       mod: {RotRaven.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :mongodb]
     ]
   end
 
@@ -46,7 +46,8 @@ defmodule RotRaven.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:poison, "~> 4.0.1", override: true},
-      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
+      {:mongodb, ">= 0.0.0"}
     ]
   end
 
