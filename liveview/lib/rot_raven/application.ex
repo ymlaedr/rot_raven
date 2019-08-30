@@ -15,7 +15,9 @@ defmodule RotRaven.Application do
       RotRavenWeb.Endpoint,
       # Starts a worker by calling: RotRaven.Worker.start_link(arg)
       # {RotRaven.Worker, arg},
-      worker(Mongo, [[name: :mongo, hostname: :mongo, port: 27017, database: "test", pool_size: 2]])
+      worker(Mongo, [
+        [name: :mongo, hostname: :mongo, port: 27017, database: "test", pool_size: 2]
+      ])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
