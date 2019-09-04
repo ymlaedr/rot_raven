@@ -10,7 +10,7 @@ config :rot_raven, RotRaven.Repo,
   pool_size: 10
 
 # Configuration for DynamoDB database
-config :my_app, RotRaven.DynamoDB.Repo,
+config :rot_raven, RotRaven.DynamoDB.Repo,
   adapter: Ecto.Adapters.DynamoDB,
   # ExAws configuration
   access_key_id: "",
