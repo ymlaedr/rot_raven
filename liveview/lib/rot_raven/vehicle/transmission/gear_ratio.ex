@@ -1,4 +1,4 @@
-defmodule RotRaven.Vehicle.Transmission.Gear.Ratio do
+defmodule RotRaven.Vehicle.Transmission.GearRatio do
   use Ecto.Schema
   import Ecto.Changeset
 

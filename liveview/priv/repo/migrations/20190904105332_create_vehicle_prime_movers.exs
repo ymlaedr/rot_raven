@@ -3,9 +3,9 @@ defmodule RotRaven.Repo.Migrations.CreateVehiclePrimeMovers do
 
   def change do
     create table(:vehicle_prime_movers) do
-      add :model, :string
-      add :engine_id, references(:vehicle_engines, on_delete: :nothing)
-      add :electric_motor_id, references(:vehicle_electoric_motors, on_delete: :nothing)
+      add :model, :string, comment: "原動機の型式"
+      add :engine_id, references(:vehicle_engines, on_delete: :nothing), comment: "原動機が有するエンジンのID"
+      add :electric_motor_id, references(:vehicle_electoric_motors, on_delete: :nothing), comment: "原動機が有するモーターのID"
 
       timestamps()
     end

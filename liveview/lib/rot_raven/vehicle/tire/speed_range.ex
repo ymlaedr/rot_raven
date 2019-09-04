@@ -3,7 +3,8 @@ defmodule RotRaven.Vehicle.Tire.SpeedRange do
   import Ecto.Changeset
 
   schema "vehicle_tire_speed_ranges" do
-    field :name, :string
+    field :speed_range_symbol, :string
+    field :max_speed, :integer
 
     timestamps()
   end
@@ -11,7 +12,7 @@ defmodule RotRaven.Vehicle.Tire.SpeedRange do
   @doc false
   def changeset(speed_range, attrs) do
     speed_range
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:speed_range_symbol, :max_speed])
+    |> validate_required([:speed_range_symbol, :max_speed])
   end
 end
