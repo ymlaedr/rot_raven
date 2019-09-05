@@ -13,8 +13,7 @@ services:
     working_dir: "/root/liveview"
     command: ["mix", "phx.server"]
     depends_on:
-      - postgres
-      - mongo
+      - pgweb
       - mongo-express
 
   elixir-grpc:
@@ -45,6 +44,14 @@ services:
       - "POSTGRES_PASSWORD=postgres"
       - "POSTGRES_HOST=database"
 
+  pgweb:
+    image: donnex/pgweb
+    ports:
+      - "18080:8080"
+    # command: ["-s", "--bind=0.0.0.0", "--listen=8080", "--host=postgres", "--ssl=disable", "--user=postgres", "--pass=postgres"]
+    depends_on:
+      - postgres
+
   mongo:
     image: mongo:4.1.13-bionic
     ports:
@@ -55,7 +62,7 @@ services:
   mongo-express:
     image: mongo-express:0.49.0
     ports:
-      - '8081:8081'
+      - "18081:8081"
     environment:
       - "ME_CONFIG_MONGODB_PORT=27017"
       - "ME_CONFIG_MONGODB_SERVER=mongo"
