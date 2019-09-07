@@ -1,59 +1,5 @@
-## 初期化
-
-### LiveView
-```sh
-docker-compose -f docker-compose.yml -f docker-compose-dev.yml run --rm liveview /bin/sh -c "mix do deps.get, deps.compile, ecto.reset" -- \
-&& \
-docker run --rm -v ${PWD}/liveview:/liveview node:12.1-alpine /bin/sh -c "cd /liveview/assets && yarn"
-```
-
 ### Nerves
 ```sh
 echo "MIX_TARGET=" > ./env_files/nerves.env
 docker run --rm -v ${PWD}/ssh_keys:/root/.ssh alpine:latest /bin/sh -c "apk add --update openssh-client && ssh-keygen -t rsa -f /root/.ssh/id_rsa -N \"\""
-```
-
-### gigalixir_client
-```sh
-echo -e "LOGIN_EMAIL=\nLOGIN_PASSWORD=" > ./env_files/gigalixir_login.env
-docker run --rm -v ${PWD}/ssh_keys:/root/.ssh alpine:latest /bin/sh -c "apk add --update openssh-client && ssh-keygen -t rsa -f /root/.ssh/rsa_gigalixir -N \"\""
-```
-
-## `mix format`、`mix credo`の実行
-```sh
-docker-compose run --rm liveview /bin/sh -c "mix format mix.exs \"lib/**/*.{ex,exs}\" \"test/**/*.{ex,exs}\" && mix credo"
-```
-
-## schemaspyの実行
-```sh
-docker-compose run --rm liveview /bin/sh -c "mix ecto.reset" -- \
-&& \
-docker-compose run --rm schemaspy
-```
-
-## PostgresQLへの接続の仕方
-コンテナを立ち上げておくこと。
-
-### LiveViewのDB(rot_raven_liveview_dev)
-```sh
-docker-compose exec database psql -U postgres -d rot_raven_liveview_dev
-```
-
-## gigalixir_clientの使い方
-1. `gigalixir_client`をビルドする
-    ```sh
-    docker-compose build gigalixir_client
-    ```
-2. 初期化の実行
-3. 下記を実行すると、gigalixirコマンドを利用できるコンテナへ入れる
-    ```sh
-    docker-compose run --rm gigalixir_client
-    ```
-
-
-## Gigalixirへデプロイ
-
-### `git push`
-```sh
-git -c http.extraheader="GIGALIXIR-CLEAN: true" subtree push --prefix liveview gigalixir master
 ```
