@@ -4,8 +4,8 @@ use Mix.Config
 config :rot_raven, RotRaven.Repo,
   username: "postgres",
   password: "postgres",
-  database: "rot_raven_test",
-  hostname: "localhost",
+  database: "rot_raven_liveview_test",
+  hostname: "postgres",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
