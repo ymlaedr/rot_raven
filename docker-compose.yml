@@ -48,7 +48,7 @@ services:
     image: donnex/pgweb
     ports:
       - "18080:8080"
-    # command: ["-s", "--bind=0.0.0.0", "--listen=8080", "--host=postgres", "--ssl=disable", "--user=postgres", "--pass=postgres"]
+    command: ["-s", "--bind=0.0.0.0", "--listen=8080", "--host=postgres", "--ssl=disable", "--user=postgres", "--pass=postgres"]
     depends_on:
       - postgres
 
