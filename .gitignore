@@ -16,3 +16,6 @@ docker-compose-nerves-devices.yml
 
 # schemaspyの出力結果をすべて無視
 schemaspy/output/*
+
+# node_modulesはすべて無視
+vuetify/node_modules/*
