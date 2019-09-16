@@ -45,10 +45,9 @@ defmodule RotRaven.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4.0"},
-      {:poison, "~> 3.1"}, 
-      {:mongodb, ">= 0.0.0"},
-      {:ex_machina, "~> 2.3", only: :dev},
-
+      {:poison, "~> 3.1"},
+      {:mongodb, "~> 0.5.1"},
+      {:ex_machina, "~> 2.3", only: :dev}
     ]
   end
 
