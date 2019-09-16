@@ -16,7 +16,21 @@ services:
       - pgweb
       - mongo-express
 
-  elixir-grpc:
+  umbrella:
+    build:
+      context: ./umbrella
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    volumes:
+      - "./umbrella:/root/umbrella"
+    working_dir: "/root/umbrella/phoenix"
+    command: ["mix", "phx.server"]
+    depends_on:
+      - pgweb
+      - mongo-express
+
+  grpc:
     build:
       context: ./grpc
       dockerfile: Dockerfile
@@ -30,6 +44,19 @@ services:
       - "./ssh_keys:/root/.ssh"
     env_file:
       - env_files/nerves.env
+
+  vuetify:
+    build:
+      context: ./vuetify
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    volumes:
+      - "./vuetify:/root/vuetify"
+    working_dir: "/root/vuetify"
+    command: /bin/sh -c "yarn && yarn serve"
+    
 
   postgres:
     image: postgres:11-alpine
