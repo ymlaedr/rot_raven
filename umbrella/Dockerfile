@@ -7,7 +7,7 @@ RUN apk \
       add \
       --update \
       --no-cache \
-      --virtual execute-phoenix-dependencies \
+      --virtual execute-phoenix-livereload-dependencies \
         inotify-tools
 
 RUN mix local.hex --force
