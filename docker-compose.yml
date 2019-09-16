@@ -24,7 +24,7 @@ services:
       - "4000:4000"
     volumes:
       - "./umbrella:/root/umbrella"
-    working_dir: "/root/umbrella/phoenix"
+    working_dir: "/root/umbrella/apps/phoenix"
     command: ["mix", "phx.server"]
     depends_on:
       - pgweb
@@ -56,7 +56,7 @@ services:
       - "./vuetify:/root/vuetify"
     working_dir: "/root/vuetify"
     command: /bin/sh -c "yarn && yarn serve"
-    
+
 
   postgres:
     image: postgres:11-alpine
