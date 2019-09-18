@@ -23,7 +23,7 @@ defmodule RotRaven.MixProject do
   def application do
     [
       mod: {RotRaven.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ex_machina, :mongodb]
     ]
   end
 
@@ -38,7 +38,9 @@ defmodule RotRaven.MixProject do
     [
       {:ecto_sql, "~> 3.1"},
       {:postgrex, ">= 0.0.0"},
-      {:jason, "~> 1.0"}
+      {:jason, "~> 1.0"},
+      {:mongodb, "~> 0.5.1"},
+      {:ex_machina, "~> 2.3"}
     ]
   end
 
