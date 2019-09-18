@@ -1,0 +1,3 @@
+# deps関係は全て無視
+_build/*
+deps/*
