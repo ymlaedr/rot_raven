@@ -50,12 +50,11 @@ services:
       context: ./vuetify
       dockerfile: Dockerfile
     ports:
-      - "8000:8000"
-      - "8080:8080"
+      - "3000:3000"
     volumes:
       - "./vuetify:/root/vuetify"
     working_dir: "/root/vuetify"
-    command: /bin/sh -c "yarn && yarn serve"
+    command: /bin/sh -c "yarn && yarn dev"
 
   postgres:
     image: postgres:11-alpine

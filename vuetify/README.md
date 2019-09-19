@@ -1,29 +1,33 @@
 # rot_raven
 
-## Project setup
+> My smashing Nuxt.js project
+
+## コンテナへの入り方
+- UP
+```sh
+docker-compose -f docker-compose.yml -f docker-compose-dev.yml up -d vuetify
+docker-compose exec vuetify sh
 ```
-yarn install
+- RUN
+```sh
+docker-compose -f docker-compose.yml -f docker-compose-dev.yml run --rm vuetify sh
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
+## Build Setup
+
+``` bash
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+
+# generate static project
+$ yarn generate
 ```
 
-### Compiles and minifies for production
-```
-yarn run build
-```
-
-### Run your tests
-```
-yarn run test
-```
-
-### Lints and fixes files
-```
-yarn run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
