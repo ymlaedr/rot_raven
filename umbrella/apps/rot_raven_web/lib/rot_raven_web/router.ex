@@ -19,6 +19,16 @@ defmodule RotRavenWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: RotRavenWeb.Schema
+
+    forward "/", Absinthe.Plug,
+      schema: RotRavenWeb.Schema
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", RotRavenWeb do
   #   pipe_through :api

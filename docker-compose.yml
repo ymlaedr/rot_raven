@@ -24,7 +24,7 @@ services:
       - "4000:4000"
     volumes:
       - "./umbrella:/root/umbrella"
-    working_dir: "/root/umbrella/apps/phoenix"
+    working_dir: "/root/umbrella"
     command: ["mix", "phx.server"]
     depends_on:
       - pgweb
@@ -67,7 +67,7 @@ services:
       - "POSTGRES_INITDB_ARGS='--lc-collate=ja_JP.utf8' '--lc-ctype=ja_JP.utf8'"
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=postgres"
-      - "POSTGRES_HOST=database"
+      - "POSTGRES_HOST=postgres"
 
   pgweb:
     image: donnex/pgweb
@@ -76,6 +76,11 @@ services:
     command: ["-s", "--bind=0.0.0.0", "--listen=8080", "--host=postgres", "--ssl=disable", "--user=postgres", "--pass=postgres"]
     depends_on:
       - postgres
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://localhost:8080 || exit 1"]
+      retries: 3
+      timeout: "5s"
+      interval: "60s"
 
   mongo:
     image: mongo:4.1.13-bionic

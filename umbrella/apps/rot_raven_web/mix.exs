@@ -45,7 +45,10 @@ defmodule RotRavenWeb.MixProject do
       {:gettext, "~> 0.11"},
       {:rot_raven, in_umbrella: true},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:absinthe, "~> 1.4.0"},
+      {:absinthe_plug, "~> 1.4.0"},
+      {:poison, "~> 3.1"}
     ]
   end
 
