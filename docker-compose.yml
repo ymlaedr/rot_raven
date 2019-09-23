@@ -1,4 +1,4 @@
-version: "3"
+version: "3.4"
 
 services:
 
@@ -20,6 +20,7 @@ services:
     build:
       context: ./umbrella
       dockerfile: Dockerfile
+      target: dev
     ports:
       - "4000:4000"
     volumes:
