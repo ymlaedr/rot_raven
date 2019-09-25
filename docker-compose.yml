@@ -51,13 +51,13 @@ services:
       context: ./vuetify
       dockerfile: Dockerfile
     ports:
-      - "13000:13000"
+      - "3000:3000"
     volumes:
       - "./vuetify:/root/vuetify"
     working_dir: "/root/vuetify"
     environment:
       - "NUXT_HOST=0.0.0.0"
-      - "NUXT_PORT=13000"
+      - "NUXT_PORT=3000"
     command: /bin/sh -c "yarn && yarn dev"
 
   postgres:
