@@ -1,4 +1,4 @@
-version: "3"
+version: "3.4"
 
 services:
 
@@ -16,7 +16,22 @@ services:
       - pgweb
       - mongo-express
 
-  elixir-grpc:
+  umbrella:
+    build:
+      context: ./umbrella
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "4000:4000"
+    volumes:
+      - "./umbrella:/root/umbrella"
+    working_dir: "/root/umbrella"
+    command: ["mix", "phx.server"]
+    depends_on:
+      - pgweb
+      - mongo-express
+
+  grpc:
     build:
       context: ./grpc
       dockerfile: Dockerfile
@@ -31,6 +46,20 @@ services:
     env_file:
       - env_files/nerves.env
 
+  vuetify:
+    build:
+      context: ./vuetify
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./vuetify:/root/vuetify"
+    working_dir: "/root/vuetify"
+    environment:
+      - "NUXT_HOST=0.0.0.0"
+      - "NUXT_PORT=3000"
+    command: /bin/sh -c "yarn && yarn dev"
+
   postgres:
     image: postgres:11-alpine
     ports:
@@ -42,7 +71,7 @@ services:
       - "POSTGRES_INITDB_ARGS='--lc-collate=ja_JP.utf8' '--lc-ctype=ja_JP.utf8'"
       - "POSTGRES_USER=postgres"
       - "POSTGRES_PASSWORD=postgres"
-      - "POSTGRES_HOST=database"
+      - "POSTGRES_HOST=postgres"
 
   pgweb:
     image: donnex/pgweb
@@ -51,6 +80,11 @@ services:
     command: ["-s", "--bind=0.0.0.0", "--listen=8080", "--host=postgres", "--ssl=disable", "--user=postgres", "--pass=postgres"]
     depends_on:
       - postgres
+    healthcheck:
+      test: ["CMD-SHELL", "curl http://localhost:8080 || exit 1"]
+      retries: 3
+      timeout: "5s"
+      interval: "60s"
 
   mongo:
     image: mongo:4.1.13-bionic
@@ -84,7 +118,7 @@ services:
     image: "schemaspy/schemaspy:snapshot"
     volumes:
       - "./schemaspy/output:/output"
-    command: ["-host", "postgres:5432", "-t", "pgsql", "-db", "rot_raven_liveview_dev", "-u", "postgres", "-p", "postgres"]
+    command: ["-host", "postgres:5432", "-t", "pgsql", "-db", "rot_raven_dev", "-u", "postgres", "-p", "postgres"]
     depends_on:
       - postgres
 

@@ -3,9 +3,22 @@ version: "3"
 services:
   liveview:
     volumes:
-      - liveview-sync-volume:/root/liveview:nocopy
+      - liveview-sync-volume:/root/liveview
 
+  umbrella:
+    volumes:
+      - umbrella-sync-volume:/root/umbrella
+
+  vuetify:
+    volumes:
+      - vuetify-sync-volume:/root/vuetify
 
 volumes:
   liveview-sync-volume:
+    external: true
+
+  umbrella-sync-volume:
+    external: true
+
+  vuetify-sync-volume:
     external: true

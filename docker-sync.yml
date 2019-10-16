@@ -3,3 +3,9 @@ version: '2'
 syncs:
   liveview-sync-volume:
     src: './liveview'
+
+  umbrella-sync-volume:
+    src: './umbrella'
+
+  vuetify-sync-volume:
+    src: './vuetify'
