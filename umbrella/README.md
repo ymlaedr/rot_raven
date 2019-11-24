@@ -11,7 +11,7 @@ docker \
   -v ${PWD}/umbrella/deps:/deps \
   --workdir /assets \
   node:12.1-alpine \
-    /bin/sh -c "cd ./assets && npm install"
+    /bin/sh -c "npm ci"
 ```
 
 ## 起動
