@@ -2,7 +2,7 @@ name: Elixir CI
 
 on:
   pull_request:
-    branches: 
+    branches:
       - master
 
 jobs:
@@ -14,11 +14,12 @@ jobs:
       image: elixir:1.9.1-slim
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Dependencies
+    - name: Checkout
+      uses: actions/checkout@v1.0.0
+    - name: build docker images
       run: |
-        mix local.rebar --force
-        mix local.hex --force
-        mix deps.get
-    - name: Run Tests
-      run: mix test
+        docker-compose build
+    - name: run test
+      run: |
+        docker-compose run --rm umbrella mix ecto.reset
+        docker-compose run --rm umbrella mix test
