@@ -9,6 +9,7 @@ docker \
   --rm \
   -v ${PWD}/umbrella/apps/rot_raven_web/assets:/assets \
   -v ${PWD}/umbrella/deps:/deps \
+  --workdir /assets \
   node:12.1-alpine \
     /bin/sh -c "cd ./assets && npm install"
 ```
