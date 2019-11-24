@@ -2,20 +2,6 @@ version: "3.4"
 
 services:
 
-  liveview:
-    build:
-      context: ./liveview
-      dockerfile: Dockerfile
-    ports:
-      - "4000:4000"
-    volumes:
-      - "./liveview:/root/liveview"
-    working_dir: "/root/liveview"
-    command: ["mix", "phx.server"]
-    depends_on:
-      - pgweb
-      - mongo-express
-
   umbrella:
     build:
       context: ./umbrella
